@@ -10,13 +10,13 @@
 #
 # License       : MIT
 # -----------------------------------------------------------
-
+#
 # have a python 3 like print() for stderr writing as a little treat
 from __future__ import print_function
+from future import standard_library
 
-__author__ = "Bea Hughes"
-__version__ = "0.2"
-
+from builtins import str
+from builtins import object
 import re
 import sys
 import urllib
@@ -25,8 +25,13 @@ from dateparser.search import search_dates
 from datetime import datetime as dt
 from datetime import timedelta
 
+__author__ = "Bea Hughes"
+__version__ = "0.2"
 
-class Entry:
+standard_library.install_aliases()
+
+
+class Entry(object):
 
     DEFAULT_EVENT_DUR = timedelta(minutes=30)
 
@@ -87,7 +92,7 @@ class Entry:
         quer.update(x)
 
         # Python 2:
-        self.uri = base + '?' + urllib.urlencode(quer)
+        self.uri = base + '?' + urllib.parse.urlencode(quer)
         return self.uri
 
     # Actually open it in a web browser
@@ -131,7 +136,7 @@ class Entry:
     # does, so it could be one way, it could be the other, hence this
     # abomination.
     def __fucky__(self, d1, d2):
-        for x, y in {d1: d2, d2: d1}.items():
+        for x, y in list({d1: d2, d2: d1}.items()):
             if dt.time(x) == self.MIDNIGHT \
                and dt.date(y) == dt.date(dt.today()):
                 # actually return a dt object with the date from x and the time
