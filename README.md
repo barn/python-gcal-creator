@@ -16,7 +16,7 @@ or with no arguments, it will read one line in. (so you can not worry about quot
 I used [pipenv](https://github.com/pypa/pipenv) to do virtualenvs which are apparently a good idea? The follow is what I done did.
 
 ```bash
-laptop:ge% git clone https://github.com/barn/python-gcal-creator.git && cd python-gcal-creator
+laptop:tmp% git clone https://github.com/barn/python-gcal-creator.git && cd python-gcal-creator
 Cloning into 'python-gcal-creator'...
 remote: Enumerating objects: 15, done.
 remote: Counting objects: 100% (15/15), done.
@@ -34,8 +34,8 @@ laptop:python-gcal-creator% pipenv shell
 Launching subshell in virtual environment…
  . /Users/bea/.virtualenvs/python-gcal-creator-1-ryXFoa/bin/activate
 
-laptop:python-gcal-creat..-gcal-creator%  . /Users/bea/.virtualenvs/python-gcal-creator-1-ryXFoa/bin/activate
+laptop:python-gcal-creator%  . /Users/bea/.virtualenvs/python-gcal-creator-1-ryXFoa/bin/activate
 
-(python-gcal-creator) laptop:python-gcal-creat..-gcal-creator% python gcollinder.py 'party at 11am tomorrow'
+laptop:python-gcal-creator% python gcollinder.py 'party at 11am tomorrow'
 https://calendar.google.com/calendar/render?action=TEMPLATE&text=party+&dates=20200226T211517%2F20200226T214517&location=&trp=True
 ```
