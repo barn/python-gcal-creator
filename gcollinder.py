@@ -63,7 +63,7 @@ class Entry:
         if r:
             self.location = r.group('location')
 
-    def url(self):
+    def generate_url(self):
         # URL format something like
         # http://www.google.com/calendar/event?ctext=+{query}+&action=TEMPLATE&pprop=HowCreated%3AQUICKA
         # Format is [event] at [time] on [date] in [location]
@@ -92,7 +92,8 @@ class Entry:
 
     # Actually open it in a web browser
     def open_url(self):
-        print("opening " + str(self.uri))
+        self.generate_url()  # generate the URI in the first place.
+        # print("opening " + str(self.uri))
         webbrowser.open(self.uri)
 
     # dateparser will return some date/times grabbed from the input. It will do
@@ -158,7 +159,8 @@ def something():
 
     e = Entry(line)
 
-    print(e.url())
+    # print(e.url())
+    e.open_url()
 
 
 if __name__ == "__main__":
